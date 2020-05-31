@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+    <title></title>
+
+    <style>
+
+        .is-loading {
+            
+            background: red;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="root">
+
+        <button v-bind:title="title">Passe o mouse sobre mim</button>
+        <button :title="title">Passe o mouse sobre mim</button>
+
+        <button v-bind:disabled="isDisabled" :class="{ 'is-loading': isLoading }" @click="toggleClass">Clique para mudar</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        var app = new Vue({
+
+            el: '#root',
+
+            data: {
+
+                title: 'O título é setado por JS',
+
+                className: 'color-red',
+
+                isLoading: false,
+
+                isDisabled: false,
+
+            },
+
+            methods: {
+
+                toggleClass() {
+
+                    this.isLoading = true;
+                    
+                    this.isDisabled = true;
+                }
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
