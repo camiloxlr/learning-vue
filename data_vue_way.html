@@ -1,0 +1,60 @@
+<html>
+
+<head>
+
+    <title></title>
+
+</head>
+
+<body>
+
+    <div id="root">
+
+        <ul>
+
+            <li v-for="name in names" v-text="name"></li>
+
+        </ul>
+
+        <input id="input" type="text" v-model="newName">
+
+        <!-- @ é igual v-on: -->
+        <button @click="addName">Adicionar Nome</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        var app = new Vue({
+
+            el: '#root',
+
+            data: {
+
+                newName: '',
+
+                names: ['Camilo', 'Joe', 'Mary J']
+
+            },
+
+            methods: {
+
+                addName() {
+
+                    this.names.push(this.newName);
+
+                    this.newName = '';
+
+                }
+
+            },
+
+        });
+
+    </script>
+
+</body>
+
+</html>
