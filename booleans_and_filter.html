@@ -1,0 +1,108 @@
+<html>
+
+<head>
+
+    <title></title>
+
+</head>
+
+<body>
+
+    <div id="root">
+
+        <h2>
+
+            {{ reversedMessage }}
+
+        </h2>
+
+
+        <h2>
+
+            Tarefas
+
+        </h2>
+
+
+        <ul>
+
+            <li v-for="task in tasks" v-text="task.description">
+
+            </li>
+
+        </ul>
+
+        <h2>
+
+            Tarefas Completadas
+
+        </h2>
+
+        <ul>
+
+            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+
+        </ul>
+
+        <h2>
+
+            Tarefas Incompletas
+
+        </h2>
+
+        <ul>
+
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+
+        </ul>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        var app = new Vue({
+
+            el: '#root',
+
+            data: {
+
+                message: 'Hello World',
+
+                tasks: [
+
+                    { description: 'Ir à loja', completed: true },
+
+                    { description: 'Beber água', completed: false },
+
+                    { description: 'Estudar', completed: true },
+
+                    { description: 'Arrumar o quarto', completed: false },
+
+                ]
+            },
+
+            computed: {
+
+                reversedMessage() {
+
+                    return this.message.split('').reverse().join('');
+
+                },
+
+                incompleteTasks() {
+
+                    return this.tasks.filter(task => ! task.completed);
+
+                }
+
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
